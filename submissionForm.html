@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" class="full-height" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="MyStyles.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+        
+    <title>TRMS Submit</title>
+</head>
+<body>
+
+<!-- Navigation bar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+<div class="row">
+    <div class="col-2 col-md-4 col-lg-6 col-xl-7">
+        <strong class="navbar-brand">Reimbursement Portal</strong>
+    </div>
+    <div class="col-10 col-md-8 col-lg-6 col-xl-5">
+        <div class="pc-only float-right">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="nav-link" href="trms.html">Home</a>
+            </div>
+            <div class="col-md-3 active">
+                <a class="nav-link disabled" href="submit.html">Submit</a>
+            </div>
+            <div class="col-md-3">
+                <a class="nav-link" href="inbox.html">Inbox</a>
+            </div>
+            <div class="col-md-3">
+                <a class="nav-link" href="index.html">Log out</a>
+            </div>
+        </div>
+        </div>
+        
+        <div class="mobile-only float-right">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="empty-space">
+                    <br/>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="trms.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link disabled" href="submit.html">Submit</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="inbox.html">Inbox</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Log out</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</nav>
+
+<div class="hat"></div>
+<!--Add class .was-validated to new-request-form if not all required fields were met-->
+    <form id="new-request-form" class="container" method="POST">
+        <h3>Tuition Reimbursement</h3>
+        <h5>The following fields are required</h5>
+        
+        <div class="form-row">
+            <div class="form-group col-md-6 col-lg-5 col-xl-4">
+                <label for="inputFirstName">First Name</label>
+                <input required type="text" class="form-control" id="inputFirstName" placeholder="John">
+            </div>
+            <div class="form-group col-md-6 col-lg-5 col-xl-4">
+                <label for="inputLastName">Last Name</label>
+                <input required type="text" class="form-control" id="inputLastName" placeholder="Smith">
+            </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-12 col-lg-10 col-xl-8">
+            <label for="inputTitle">Title of Event</label>
+            <input required type="text" class="form-control" id="inputTitle" placeholder="Ex: CompTIA SEC+, Algorithms class, etc">
+        </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-4 col-lg-3">
+            <label for="inputEventCost">Event Cost</label>
+            <input required type="text" class="form-control" id="inputEventCost" placeholder="500.00"/>
+        </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 col-lg-3">
+            <label>Event Type</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="eventType" id="certificationRadio" onchange="enableInputOtherEvent()" value="Certification">
+                    <label class="form-check-label" for="certificationRadio">Certification</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="eventType" id="certPrepRadio" onchange="enableInputOtherEvent()" value="Certification Prep Class">
+                    <label class="form-check-label" for="certPrepRadio">Certification Prep Class</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="eventType" id="universityRadio" onchange="enableInputOtherEvent()"value="University">
+                    <label class="form-check-label" for="universityRadio">University</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="eventType" id="techTrainRadio" onchange="enableInputOtherEvent()" value="Technical Training">
+                    <label class="form-check-label" for="techTrainRadio">Technical Training</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="eventType" id="seminarRadio" onchange="enableInputOtherEvent()" value="Seminar">
+                    <label class="form-check-label" for="seminarRadio">Seminar</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="eventType" id="otherEventTypeRadio" onchange="enableInputOtherEvent()" value="Other">
+                    <label class="form-check-label" for="otherEventTypeRadio">Other</label>
+                </div>
+            </div>
+            <div class="form-group col-md-4 col-lg-3">
+                <label>Grading Format</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gradingFormat" id="presentationRadio" onchange="enableInputOtherFormat()" value="Presentation">
+                    <label class="form-check-label" for="presentationRadio">Presentation</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gradingFormat" id="percentGradeRadio" onchange="enableInputOtherFormat()" value="Percent grade">
+                    <label class="form-check-label" for="percentGradeRadio">Percent grade</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gradingFormat" id="letterGradeRadio" onchange="enableInputOtherFormat()" value="Letter grade">
+                    <label class="form-check-label" for="letterGradeRadio">Letter grade</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gradingFormat" id="fourPointRadio" onchange="enableInputOtherFormat()" value="4-point scale">
+                    <label class="form-check-label" for="fourPointRadio">4-point scale</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gradingFormat" id="passOrFailRadio" onchange="enableInputOtherFormat()" value="PassOrFail">
+                    <label class="form-check-label" for="passOrFailRadio">Pass/Fail</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gradingFormat" id="otherGradingFormatRadio" onchange="enableInputOtherFormat()" value="Other">
+                    <label class="form-check-label" for="otherGradingFormatRadio">Other</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 col-lg-3">
+                <label for="inputIfOtherType">if Other, please specify</label>
+                <input type="text" class="form-control" id="inputIfOtherType" placeholder="Linda, Skillshare, etc." disabled/>
+            </div>
+            <div class="form-group col-md-4 col-lg-3">
+                <label for="inputIfOtherGrade">if Other, specify format</label>
+                <input type="text" class="form-control" id="inputIfOtherGrade" placeholder="7 point scale, etc" disabled/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 col-lg-3">
+                <label for="inputStartDate">Start Date</label>
+                <input required type="date" class="form-control" id="inputStartDate">
+            </div>
+            <div class="form-group col-md-4 col-lg-3">
+                <label for="inputEndDate">End Date</label>
+                <input required type="date" class="form-control" id="inputEndDate">
+            </div>
+            <div class="form-group col-md-4 col-lg-3">
+                <label for="daysUntilStart">Days until Start <span class="urgent"></span></label>
+                <input type="text" readonly class="form-control-plaintext" id="daysUntilStart" value="">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4 col-lg-3">
+                <label for="inputStartTime">Start Time</label>
+                <input required type="time" class="form-control" id="inputStartTime">
+            </div>
+            <div class="form-group col-md-4 col-lg-3">
+                <label for="inputEndTime">End Time</label>
+                <input required type="time" class="form-control" id="inputEndTime">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="timePerDay">Time per Day</label>
+                <input type="text" readonly class="form-control-plaintext" id="timePerDay" value="">
+            </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-12 col-lg-10 col-xl-8">
+            <label for="inputAddress">Event Address</label>
+            <input required type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-12 col-lg-10 col-xl-8">
+            <label for="inputAddress2">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        </div> 
+        <div class="form-row">
+            <div class="form-group col-md-6 col-lg-5 col-xl-4">
+                <label for="inputCity">City</label>
+                <input required type="text" class="form-control" id="inputCity" placeholder="Reston">
+            </div>
+            <div class="form-group col-md-4 col-lg-3 col-xl-2">
+                <label for="inputState">State</label>
+                <input required type="text" class="form-control" id="inputState" list="state" placeholder="VA"/>
+                <datalist id="state">
+                    <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
+                </datalist>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input required type="text" class="form-control" id="inputZip" placeholder="12345">
+            </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-12 col-lg-10 col-xl-8">
+            <label for="inputDescription">Event Description</label>
+            <textarea required class="form-control" id="inputDescription" rows="2" placeholder="What you're learning and how"></textarea>
+        </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-12 col-lg-10 col-xl-8">
+            <label for="inputJustification">Justification</label>
+            <textarea required class="form-control" id="inputJustification" rows="2" placeholder="Provide any additional reasons you may have for attending this event."></textarea>
+        </div>
+        </div>
+        
+        <h5>The following fields are optional</h5>
+
+        <div class="form-row">
+            <div class="form-group col-md-6 col-lg-5 col-xl-4">
+                <label for="inputSubject">Subject/Topic of Event</label>
+                <input type="text" class="form-control" id="inputSubject" placeholder="Hospitality, Computer Science, etc.">
+            </div>
+            <div class="form-group col-md-6 col-lg-5 col-xl-4">
+                <label for="missedWorkTime">Estimated missed work time in hours</label>
+                <input type="number" class="form-control" id="missedWorkTime" placeholder="100">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-7 col-lg-6 col-xl-5">
+                <p>If you have any documents that support or describe
+                    the event, attach the document here</p>
+            </div>
+            <div class="form-group col-md-5 col-lg-4 col-xl-3">
+            <div class="custom-file">
+                <label class="custom-file-label" for="supportAttachments">Choose file...</label>
+                <input type="file" class="custom-file-input" id="supportAttachments">
+            </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-7 col-lg-6 col-xl-5">
+                <p>If you have event approval from your Supervisor,
+                    attach their supporting email here</p>
+            </div>
+            <div class="form-group col-md-5 col-lg-4 col-xl-3">
+            <div class="custom-file">
+                <label class="custom-file-label" for="browseSupervisorApproval">Choose file...</label>
+                <input type="file" class="custom-file-input" id="browseSupervisorApproval">
+            </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-7 col-lg-6 col-xl-5">
+                <p>If you have event approval from your Department Head,
+                    attach their supporting email here</p>
+            </div>
+            <div class="form-group col-md-5 col-lg-4 col-xl-3">
+            <div class="custom-file">
+                <label class="custom-file-label" for="browseDeptHeadApproval">Choose file...</label>
+                <input type="file" class="custom-file-input" id="browseDeptHeadApproval">
+            </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+        <div class="form-group col-md-12 col-lg-10 col-xl-8">
+            <button type="submit" class="btn btn-lg btn-primary" id="submit-new-request">Submit</button>
+        </div>
+        </div>
+    </form>
+    <div id="shoe"></div>
+</body>
+<footer>
+    <script src="script.js" type="text/javascript"></script>
+    <script src="submit.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</footer>
+</html>
